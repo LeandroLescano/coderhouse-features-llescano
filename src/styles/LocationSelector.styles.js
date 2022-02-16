@@ -25,4 +25,8 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     textTransform: 'uppercase',
   },
+  actions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });

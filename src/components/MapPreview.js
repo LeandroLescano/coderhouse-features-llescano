@@ -6,6 +6,7 @@ import {styles} from '../styles/MapPreview.styles';
 
 const MapPreview = ({location, children, style}) => {
   const {latitude, longitude} = location;
+
   const mapPreviewUrl = location
     ? `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=13&size=600x300&maptype=roadmap
     &markers=color:blue%7Clabel:N%7C${latitude},${longitude}&key=${API_KEY}`
