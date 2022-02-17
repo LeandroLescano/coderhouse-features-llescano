@@ -1,22 +1,29 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect} from 'react';
 
 import PlaceItem from '../components/PlaceItem';
-import React from 'react';
+import {getPlaces} from '../store/places.action';
+import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
 
 const PlaceListScreen = ({navigation}) => {
   const places = useSelector(state => state.places.places);
+  const dispatch = useDispatch();
 
-  const onSelectDetail = () => {
-    navigation.navigate('PlaceDetail');
+  const onSelectDetail = place => {
+    navigation.navigate('PlaceDetail', {place: place});
   };
+
+  useEffect(() => {
+    dispatch(getPlaces());
+  }, []);
 
   const renderItem = ({item}) => (
     <PlaceItem
       title={item.title}
       image={item.image}
       address={item.address}
-      onSelect={onSelectDetail}
+      onSelect={() => onSelectDetail(item)}
     />
   );
 
